@@ -32,6 +32,7 @@ public class FileUploadService {
         Tesseract tesseract = new Tesseract();
         tesseract.setDatapath(currDir.getAbsolutePath());
         String text = tesseract.doOCR(dstDir);
+        System.out.println(text);
         return text;
     }
 }

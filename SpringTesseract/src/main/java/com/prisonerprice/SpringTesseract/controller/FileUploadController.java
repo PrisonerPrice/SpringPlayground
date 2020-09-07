@@ -1,10 +1,9 @@
 package com.prisonerprice.SpringTesseract.controller;
 
 import com.prisonerprice.SpringTesseract.service.FileUploadService;
+import io.swagger.annotations.Api;
 import net.sourceforge.tess4j.TesseractException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -12,7 +11,9 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 
+@Api(tags = "Upload Controller")
 @RestController
+@RequestMapping(value = {"/rest"})
 public class FileUploadController {
 
     @Autowired
@@ -20,15 +21,22 @@ public class FileUploadController {
 
     @GetMapping("/")
     public String index() {
-        return "upload";
+        return "uploadbnfnbfbn";
     }
 
-    @PostMapping("/upload")
+    @PostMapping(value = "/upload")
     public RedirectView uploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) throws IOException, TesseractException {
         String text = fileUploadService.uploadFile(file);
         redirectAttributes.addFlashAttribute("file", file);
         redirectAttributes.addFlashAttribute("text", text);
+        //return "result: ";
         return new RedirectView("result");
     }
 
+//    @RequestMapping("/result")
+//    public String result() {
+//        return "result";
+//    }
+
 }
+
