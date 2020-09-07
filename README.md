@@ -3,6 +3,7 @@ Here is a repo including demo apps related to SpringBoot framework
 
 ## SpringTesseract
 Tesseract is a powerful OCR library maintained by Google. This demo app uses Tess4J to achieve the ORC functionalities.
+
 References: https://stackabuse.com/tesseract-simple-java-optical-character-recognition/
 
 ## reactiveMongoTesting
