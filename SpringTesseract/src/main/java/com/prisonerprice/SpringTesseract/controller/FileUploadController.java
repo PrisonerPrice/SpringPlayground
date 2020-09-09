@@ -1,13 +1,14 @@
 package com.prisonerprice.SpringTesseract.controller;
 
-import com.prisonerprice.SpringTesseract.service.FileUploadService;
+import com.prisonerprice.SpringTesseract.service.PdfToImageToTextService;
+import com.prisonerprice.SpringTesseract.service.PdfToTextService;
 import io.swagger.annotations.Api;
 import net.sourceforge.tess4j.TesseractException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 
@@ -17,26 +18,24 @@ import java.io.IOException;
 public class FileUploadController {
 
     @Autowired
-    private FileUploadService fileUploadService;
+    private PdfToImageToTextService pdfToImageToTextService;
+
+    @Autowired
+    private PdfToTextService pdfToTextService;
 
     @GetMapping("/")
     public String index() {
         return "uploadbnfnbfbn";
     }
 
-    @PostMapping(value = "/upload")
-    public RedirectView uploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) throws IOException, TesseractException {
-        String text = fileUploadService.uploadFile(file);
-        redirectAttributes.addFlashAttribute("file", file);
-        redirectAttributes.addFlashAttribute("text", text);
-        //return "result: ";
-        return new RedirectView("result");
+    @PostMapping(value = "/upload_v1")
+    public ResponseEntity<String> uploadFile_v1(@RequestParam("file") MultipartFile file) throws IOException, TesseractException {
+        return new ResponseEntity<>(pdfToImageToTextService.uploadFile(file), HttpStatus.OK);
     }
 
-//    @RequestMapping("/result")
-//    public String result() {
-//        return "result";
-//    }
-
+    @PostMapping(value = "/upload_v2")
+    public ResponseEntity<String> uploadFile_v2(@RequestParam("file") MultipartFile file) throws IOException, TesseractException {
+        return new ResponseEntity<>(pdfToTextService.uploadFile(file), HttpStatus.OK);
+    }
 }
 
