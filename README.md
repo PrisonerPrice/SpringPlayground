@@ -8,6 +8,8 @@ This demo shows how to convert Pdf file to plain String text, provides 2 ways:
 
 1) Using pdfbox to convert pdf to images as the data source for Tesseract. And then use tess4J to do the OCR and get the text.
 
+Before using Tesseract, it is also needed to be installed on local by: `$ brew install tesseract`
+
 2) Directly using pdfbox to convert pdf to plain String text.
 
 References: 
