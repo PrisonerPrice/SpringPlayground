@@ -2,6 +2,10 @@
 
 Here is a repo including demo apps related to SpringBoot framework
 
+## SimpleKafka
+
+Under construction
+
 ## SpringTesseract
 
 This demo shows how to convert Pdf file to plain String text, provides 2 ways:
