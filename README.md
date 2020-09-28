@@ -4,7 +4,23 @@ Here is a repo including demo apps related to SpringBoot framework
 
 ## SimpleKafka
 
-Under construction
+This is a simple demo shows how to use Kafa and SpringBoot to publish and listen to topics.
+
+Install on macOS:
+
+`
+$ brew install kafka
+`
+
+Start zooKeeper and kafka services:
+
+`
+zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
+`
+
+`
+kafka-server-start /usr/local/etc/kafka/server.properties
+`
 
 ## SpringTesseract
 
