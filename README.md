@@ -22,6 +22,14 @@ zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
 kafka-server-start /usr/local/etc/kafka/server.properties
 `
 
+References:
+
+https://www.baeldung.com/spring-kafka
+
+https://medium.com/@Ankitthakur/apache-kafka-installation-on-mac-using-homebrew-a367cdefd273
+
+https://kafka.apache.org/quickstart
+
 ## SpringTesseract
 
 This demo shows how to convert Pdf file to plain String text, provides 2 ways:
