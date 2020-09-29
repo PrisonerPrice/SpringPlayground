@@ -30,6 +30,10 @@ https://medium.com/@Ankitthakur/apache-kafka-installation-on-mac-using-homebrew-
 
 https://kafka.apache.org/quickstart
 
+https://github.com/TechPrimers/spring-boot-kafka-producer-example
+
+https://github.com/TechPrimers/spring-boot-kafka-consumer-example
+
 ## SpringTesseract
 
 This demo shows how to convert Pdf file to plain String text, provides 2 ways:
@@ -45,10 +49,6 @@ https://stackabuse.com/tesseract-simple-java-optical-character-recognition/
 https://www.baeldung.com/pdf-conversions-java
 
 https://www.tutorialspoint.com/how-to-read-data-from-pdf-file-and-display-on-console-in-java
-
-https://github.com/TechPrimers/spring-boot-kafka-producer-example
-
-https://github.com/TechPrimers/spring-boot-kafka-consumer-example
 
 ## ThymeleafDemo
 
