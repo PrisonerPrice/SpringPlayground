@@ -46,6 +46,10 @@ https://www.baeldung.com/pdf-conversions-java
 
 https://www.tutorialspoint.com/how-to-read-data-from-pdf-file-and-display-on-console-in-java
 
+https://github.com/TechPrimers/spring-boot-kafka-producer-example
+
+https://github.com/TechPrimers/spring-boot-kafka-consumer-example
+
 ## ThymeleafDemo
 
 Thymeleaf is a modern server-side Java template engine. This demo combines the basic demo provided by spring.io and an upload file example by Atta.
