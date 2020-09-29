@@ -4,7 +4,7 @@ Here is a repo including demo apps related to SpringBoot framework
 
 ## SimpleKafka
 
-This is a simple demo shows how to use Kafa and SpringBoot to publish and listen to topics.
+This is a simple demo shows how to use Kafa and SpringBoot to publish and listen to topics. On master branch, Serialization and Deserialization are using JsonSerializer; on avroSerilizer branch, are using AvroSerializer.
 
 Install on macOS:
 
@@ -15,11 +15,11 @@ $ brew install kafka
 Start zooKeeper and kafka services:
 
 `
-zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
+$ zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
 `
 
 `
-kafka-server-start /usr/local/etc/kafka/server.properties
+$ kafka-server-start /usr/local/etc/kafka/server.properties
 `
 
 References:
