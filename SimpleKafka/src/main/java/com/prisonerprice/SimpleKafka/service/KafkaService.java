@@ -19,7 +19,7 @@ public class KafkaService {
     public void sendMessage(String message) {
 
         ListenableFuture<SendResult<String, String>> future =
-                kafkaTemplate.send("people", message);
+                kafkaTemplate.send("simpleString", message);
 
         future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
 
@@ -37,11 +37,11 @@ public class KafkaService {
     }
 
     public void sendMessageWithoutCallback(String message) {
-        kafkaTemplate.send("people", message);
+        kafkaTemplate.send("simpleString", message);
     }
 
-    @KafkaListener(topics = "people", groupId = GROUP_ID)
-    public void listenGroupFoo(String message) {
-        System.out.println("Received Message in group dummy: " + message);
+    @KafkaListener(topics = "simpleString")
+    public void listenToSimpleString(String message) {
+        System.out.println("Received simple string: " + message);
     }
 }

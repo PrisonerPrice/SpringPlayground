@@ -1,8 +1,8 @@
 package com.prisonerprice.SimpleKafka.config;
 
+import com.prisonerprice.SimpleKafka.avro.AvroSerializer;
 import com.prisonerprice.SimpleKafka.model.People;
 import org.apache.kafka.clients.admin.AdminClientConfig;
-import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public class KafkaTopicConfig {
+public class KafkaProducerConfig {
 
     @Value(value = "${kafka.bootstrapAddress}")
     private String bootstrapAddress;
@@ -29,10 +29,14 @@ public class KafkaTopicConfig {
         return new KafkaAdmin(configs);
     }
 
-    @Bean
-    public NewTopic topic() {
-        return new NewTopic("people", 1, (short) 1);
-    }
+    /*
+     * Simple String message
+     */
+
+//    @Bean
+//    public NewTopic topic() {
+//        return new NewTopic("simpleString", 1, (short) 1);
+//    }
 
     @Bean
     public ProducerFactory<String, String> producerFactory() {
@@ -50,7 +54,32 @@ public class KafkaTopicConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, String> kafkaTemplateForPeople() {
+    public KafkaTemplate<String, String> kafkaTemplateForSimpleString() {
         return new KafkaTemplate<>(producerFactory());
     }
+
+    /*
+     * People message
+     */
+
+    @Bean
+    public ProducerFactory<String, People> producerFactoryForPeople() {
+        Map<String, Object> configProps = new HashMap<>();
+        configProps.put(
+                ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
+                bootstrapAddress);
+        configProps.put(
+                ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
+                StringSerializer.class);
+        configProps.put(
+                ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
+                AvroSerializer.class);
+        return new DefaultKafkaProducerFactory<>(configProps);
+    }
+
+    @Bean
+    public KafkaTemplate<String, People> kafkaTemplateForPeople() {
+        return new KafkaTemplate<>(producerFactoryForPeople());
+    }
+
 }
