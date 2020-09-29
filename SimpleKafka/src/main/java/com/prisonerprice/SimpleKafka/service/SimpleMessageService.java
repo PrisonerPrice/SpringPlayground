@@ -9,17 +9,17 @@ import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
 @Service
-public class KafkaService {
+public class SimpleMessageService {
 
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    private final static String GROUP_ID = "dummy";
+    private final String SIMPLE_TOPIC = "simpleMessage";
 
     public void sendMessage(String message) {
 
         ListenableFuture<SendResult<String, String>> future =
-                kafkaTemplate.send("simpleString", message);
+                kafkaTemplate.send(SIMPLE_TOPIC, message);
 
         future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
 
@@ -37,11 +37,11 @@ public class KafkaService {
     }
 
     public void sendMessageWithoutCallback(String message) {
-        kafkaTemplate.send("simpleString", message);
+        kafkaTemplate.send(SIMPLE_TOPIC, message);
     }
 
-    @KafkaListener(topics = "simpleString")
-    public void listenToSimpleString(String message) {
+    @KafkaListener(topics = SIMPLE_TOPIC, groupId = "simple_group")
+    public void simpleListener(String message) {
         System.out.println("Received simple string: " + message);
     }
 }

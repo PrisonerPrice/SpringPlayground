@@ -9,20 +9,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
-import java.util.List;
-
 @Service
 public class PeopleMessageService {
 
     @Autowired
     private KafkaTemplate<String, People> peopleKafkaTemplate;
 
-    private final static String GROUP_ID = "dummy";
+    private final String PEOPLE_TOPIC = "peopleMessage";
 
     public void sendMessage(People people) {
 
         ListenableFuture<SendResult<String, People>> future =
-                peopleKafkaTemplate.send("people", people);
+                peopleKafkaTemplate.send(PEOPLE_TOPIC, people);
 
         future.addCallback(new ListenableFutureCallback<SendResult<String, People>>() {
 
@@ -40,14 +38,11 @@ public class PeopleMessageService {
     }
 
     public void sendMessageWithoutCallback(People people) {
-        peopleKafkaTemplate.send("simpleString", people);
+        peopleKafkaTemplate.send(PEOPLE_TOPIC, people);
     }
 
-    @KafkaListener(topics = "people")
-    public void listenToPeople(List<People> people) {
-        for (People p : people) {
-            System.out.println("Received people message: " + p.toString());
-        }
-
+    @KafkaListener(topics = PEOPLE_TOPIC, groupId = "people_group", containerFactory = "peopleListenerContainerFactory")
+    public void peopleListener(People people) {
+        System.out.println("Received people message: " + people.toString());
     }
 }

@@ -1,8 +1,8 @@
 package com.prisonerprice.SimpleKafka.controller;
 
 import com.prisonerprice.SimpleKafka.model.People;
-import com.prisonerprice.SimpleKafka.service.KafkaService;
 import com.prisonerprice.SimpleKafka.service.PeopleMessageService;
+import com.prisonerprice.SimpleKafka.service.SimpleMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,14 +13,14 @@ import java.util.Date;
 public class DummyController {
 
     @Autowired
-    private KafkaService kafkaService;
+    private SimpleMessageService simpleMessageService;
 
     @Autowired
     private PeopleMessageService peopleMessageService;
 
     @GetMapping
     public String doSomething() {
-        kafkaService.sendMessage("Now time is: " + new Date(System.currentTimeMillis()));
+        simpleMessageService.sendMessage("Now time is: " + new Date(System.currentTimeMillis()));
         People people = new People();
         people.setFirstName("Stan");
         people.setLastName("Smith");
