@@ -1,5 +1,6 @@
 package com.prisonerprice.SimpleKafka.config;
 
+import com.prisonerprice.SimpleKafka.avro.AvroSerializer;
 import com.prisonerprice.SimpleKafka.model.People;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -62,7 +63,7 @@ public class KafkaProducerConfig {
                 StringSerializer.class);
         configProps.put(
                 ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
-                JsonSerializer.class);
+                AvroSerializer.class);
         return new DefaultKafkaProducerFactory<>(configProps);
     }
 
