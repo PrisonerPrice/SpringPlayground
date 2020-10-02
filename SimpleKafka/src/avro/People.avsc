@@ -1,5 +1,5 @@
 {
-  "namespace": "com.prisonerprice",
+  "namespace": "com.prisonerprice.SimpleKafka.model",
   "type": "record",
   "name": "People",
   "fields": [

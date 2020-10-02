@@ -1,7 +1,7 @@
 package com.prisonerprice.SimpleKafka.config;
 
+import com.prisonerprice.People;
 import com.prisonerprice.SimpleKafka.avro.AvroDeserializer;
-import com.prisonerprice.SimpleKafka.model.People;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;

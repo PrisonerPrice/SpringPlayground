@@ -1,6 +1,6 @@
 package com.prisonerprice.SimpleKafka.service;
 
-import com.prisonerprice.SimpleKafka.model.People;
+import com.prisonerprice.People;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
