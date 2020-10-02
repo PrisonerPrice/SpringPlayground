@@ -4,7 +4,7 @@ Here is a repo including demo apps related to SpringBoot framework
 
 ## SimpleKafka
 
-This is a simple demo shows how to use Kafa and SpringBoot to publish and listen to topics. On master branch, Serialization and Deserialization are using JsonSerializer; on avroSerilizer branch, are using AvroSerializer.
+This is a simple demo shows how to use Kafka and SpringBoot to publish and listen to topics. This simple demo contains how to configure Kafka, Kafka Producer, and Kafka Consumer; Also covers how to use Apache Avro and set up avro serializer, avro deserializer, and corresponding schema.
 
 Install on macOS:
 
@@ -33,6 +33,8 @@ https://kafka.apache.org/quickstart
 https://github.com/TechPrimers/spring-boot-kafka-producer-example
 
 https://github.com/TechPrimers/spring-boot-kafka-consumer-example
+
+https://github.com/davidmc24/gradle-avro-plugin
 
 ## SpringTesseract
 
